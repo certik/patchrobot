@@ -1,7 +1,8 @@
 body {
 }
 
-a:visited { color: #000000; }
+a:link { color: #0000ff; }
+a:visited { color: #0000ff; }
 
 table {
 	border-collapse: collapse;

@@ -17,13 +17,13 @@
             <th><a class="colinactive" href="list?order=patch">Patch</a></th>   <th><a class="colinactive" href="list?order=date">Date</a></th>   <th><a class="colinactive" href="list?order=submitter">Submitter</a></th>   <th><a class="colinactive" href="list?order=state">State</a></th>  <th>&nbsp;</th></tr>
             {% for message in patch.message_set.all %}
              <tr class="{% cycle 'even' 'odd' %}">
-              <td><input type="checkbox" name="ids[]" value="20232"/></td>
+              <td></td>
               <td>{{ message.subject }}</a></td>
 
               <td>{{ message.date }}</td>
               <td>{{ message.sender }}</td>
               <td>New</td>
-              <td>xx</td>
+              <td></td>
              </tr>
             {% endfor %}
             </table>
