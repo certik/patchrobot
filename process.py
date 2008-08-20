@@ -19,7 +19,7 @@ for e in l:
     if sub.startswith("Re: "):
         sub = sub[4:]
     print sub
-    m = Message( _from = e["from"], date=e["date"],
+    m = Message( sender = e["from"], date=e["date"],
             subject = e["subject"], body = e["body"])
     try:
         c = Message.objects.get(subject__exact=sub)

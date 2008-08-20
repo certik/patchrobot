@@ -2,11 +2,16 @@
 {% if issue_list %}
     {% for issue in issue_list %}
         <h3>id:{{ issue.id }}</h3>
-        <ul>
         {% for patch in issue.patch_set.all %}
-            <li>id:{{ patch.id }} name: {{ patch.subject }}</li>
+            <p>
+            id:{{ patch.id }} name: {{ patch.subject }}
+            </p>
+            <ul>
+            {% for message in patch.message_set.all %}
+                <li>from:{{ message.sender }} subject:{{ message.subject }}</li>
+            {% endfor %}
+            </ul>
         {% endfor %}
-        </ul>
     {% endfor %}
 {% else %}
     <p>No polls are available.</p>
