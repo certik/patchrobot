@@ -13,19 +13,21 @@ Patch.objects.all().delete()
 Message.objects.all().delete()
 print "adding messages"
 
-def group_messages(l):
-    return [[[x]] for x in l]
-
 l = cPickle.load(open("emails"))
-l = group_messages(l)
-for issue in l:
-    i = Issue()
-    i.save()
-    print i
-    for patch in issue:
-        p = Patch(issue=i)
+for e in l:
+    sub = e["subject"]
+    if sub.startswith("Re: "):
+        sub = sub[4:]
+    print sub
+    m = Message( _from = e["from"], date=e["date"],
+            subject = e["subject"], body = e["body"])
+    try:
+        c = Message.objects.get(subject__exact=sub)
+        m.patch = c.patch
+    except Message.DoesNotExist:
+        i = Issue()
+        i.save()
+        p = Patch(issue=i, subject=sub)
         p.save()
-        for e in patch:
-            m = Message(patch=p, _from = e["from"], date=e["date"],
-                    subject = e["subject"], body = e["body"])
-            m.save()
+        m.patch = p
+    m.save()
