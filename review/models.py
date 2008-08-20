@@ -31,6 +31,9 @@ class Message(models.Model):
     #date = models.DateTimeField('message date')
     date = models.CharField(max_length=100)
     body = models.CharField(max_length=10000)
+    message_id = models.CharField(max_length=100)
+    parent_id = models.CharField(max_length=100)
+    parent = models.IntegerField()
 
     def __unicode__(self):
         return "%s: %s" % (self.sender, self.patch.subject)

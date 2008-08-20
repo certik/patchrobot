@@ -27,6 +27,8 @@ def parse_email(x):
     if e.is_multipart():
         raise Exception("Multipart messages are not yet implemented")
     r["body"] = e.get_payload(decode=True)
+    r["ID"] = e["Message-ID"]
+    r["parent"] = e["In-Reply-To"]
     return r
 
 def get_emails(server, user, password):
