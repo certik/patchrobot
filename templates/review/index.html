@@ -1,10 +1,13 @@
 <h2>Patches list</h2>
 {% if issue_list %}
-    <ul>
     {% for issue in issue_list %}
-    <li>id:{{ issue.id }} name:{{ issue.name }}</li>
+        <h3>id:{{ issue.issue.id }}</h3>
+        <ul>
+        {% for patch in issue.patch_set %}
+            <li>id:{{ patch.id }} name: {{ patch.subject }}</li>
+        {% endfor %}
+        </ul>
     {% endfor %}
-    </ul>
 {% else %}
     <p>No polls are available.</p>
 {% endif %}
