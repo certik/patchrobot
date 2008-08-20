@@ -16,7 +16,7 @@
             <tr><th></th>
             <th><a class="colinactive" href="list?order=patch">Patch</a></th>   <th><a class="colinactive" href="list?order=date">Date</a></th>   <th><a class="colinactive" href="list?order=submitter">Submitter</a></th>   <th><a class="colinactive" href="list?order=state">State</a></th>  <th>&nbsp;</th></tr>
             {% for message in patch.message_set.all %}
-             <tr class="even">
+             <tr class="{% cycle 'even' 'odd' %}">
               <td><input type="checkbox" name="ids[]" value="20232"/></td>
               <td><a href="patch?id=20232">{{ message.subject }}</a></td>
 
