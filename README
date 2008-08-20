@@ -1,0 +1,9 @@
+To make this work:
+
+$ ./getmail.py -c
+$ ./getmail.py config
+$ ./process.py
+$ ./manage.py runserver
+
+
+go to: http://127.0.0.1:8000/issues/
