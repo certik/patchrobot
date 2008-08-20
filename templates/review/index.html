@@ -7,10 +7,10 @@
 <h2>Patches list</h2>
 {% if issue_list %}
     {% for issue in issue_list %}
-        <h3>id:{{ issue.id }}</h3>
+        <h3>Patch series {{ issue.id }}</h3>
         {% for patch in issue.patch_set.all %}
             <p>
-            id:{{ patch.id }} name: {{ patch.subject }}
+            patch name: <a href="{{ patch.id }}">{{ patch.subject }}</a>
             </p>
             <table class="patchlist">
             <tr><th></th>
@@ -18,10 +18,10 @@
             {% for message in patch.message_set.all %}
              <tr class="{% cycle 'even' 'odd' %}">
               <td><input type="checkbox" name="ids[]" value="20232"/></td>
-              <td><a href="patch?id=20232">{{ message.subject }}</a></td>
+              <td>{{ message.subject }}</a></td>
 
               <td>{{ message.date }}</td>
-              <td><a href="list?person=1350">{{ message.sender }}</a></td>
+              <td>{{ message.sender }}</td>
               <td>New</td>
               <td>xx</td>
              </tr>
