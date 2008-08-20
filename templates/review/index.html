@@ -1,3 +1,9 @@
+<html>
+<head>
+    <title>Patch Robot</title>
+    <link type="text/css" rel="stylesheet" href="/static/style.css">
+</head>
+<body>
 <h2>Patches list</h2>
 {% if issue_list %}
     {% for issue in issue_list %}
@@ -6,14 +12,31 @@
             <p>
             id:{{ patch.id }} name: {{ patch.subject }}
             </p>
-            <ul>
+            <table class="patchlist">
+            <tr><th></th>
+            <th><a class="colinactive" href="list?order=patch">Patch</a></th>   <th><a class="colinactive" href="list?order=date">Date</a></th>   <th><a class="colinactive" href="list?order=submitter">Submitter</a></th>   <th><a class="colinactive" href="list?order=state">State</a></th>  <th>&nbsp;</th></tr>
             {% for message in patch.message_set.all %}
-                <li>from:{{ message.sender }} subject:{{ message.subject }}</li>
+             <tr class="even">
+              <td><input type="checkbox" name="ids[]" value="20232"/></td>
+              <td><a href="patch?id=20232">{{ message.subject }}</a></td>
+
+              <td>{{ message.date }}</td>
+              <td><a href="list?person=1350">{{ message.sender }}</a></td>
+              <td>New</td>
+              <td>xx</td>
+             </tr>
             {% endfor %}
-            </ul>
+            </table>
+
         {% endfor %}
     {% endfor %}
 {% else %}
     <p>No polls are available.</p>
 {% endif %}
 
+  <div id="footer">
+   <a href="http://github.com/certik/patchrobot/">patchrobot</a>
+   patch tracking system
+  </div>
+</body>
+</html>

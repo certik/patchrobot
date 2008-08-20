@@ -1,3 +1,5 @@
+import os
+
 from django.conf.urls.defaults import *
 
 from django.contrib import admin
@@ -16,4 +18,6 @@ urlpatterns = patterns('',
     (r'^issues/(?P<issue_id>\d+)/$', 'patchrobot.review.views.issue'),
     (r'^issues/(?P<issue_id>\d+)/(?P<message_id>\d+)/$',
         'patchrobot.review.views.message'),
+    (r'^static/(?P<path>.*)$', 'django.views.static.serve',
+        {'document_root': os.path.join(os.path.dirname(__file__), 'static')})
 )

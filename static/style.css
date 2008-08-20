@@ -1,0 +1,121 @@
+body {
+}
+
+a:visited { color: #000000; }
+
+table {
+	border-collapse: collapse;
+}
+
+table.patchlist {
+	border: thin solid black;
+}
+
+table.patchmeta {
+	margin-bottom: 1em;
+}
+
+table.patchlist tr td {
+	padding: 2px 6px 2px 6px;
+	margin: 0px;
+	margin-top: 10px;
+}
+
+table.list-selectbox {
+	margin-bottom: 1em;
+
+}
+table.list-selectbox tr {
+}
+
+table.list-selectbox tr td {
+	padding: 0px 10px 0px 10px;
+}
+
+table.patchmeta tr th, table.patchmeta tr td {
+	text-align: left;
+	padding: 3px 10px 3px 10px;
+	vertical-align: middle;
+}
+
+div#multipleform table th, div#multipleform table td {
+	text-align: left;
+}
+
+tr.odd {
+	background: #ffffff;
+}
+
+tr.even {
+	background: #eeeeee;
+}
+
+.colactive {
+	color: red;
+}
+a.colinactive {
+	color: black;
+	text-decoration: none;
+}
+a.colinactive:hover {
+	color: red;
+}
+
+#footer {
+	padding: 1em;
+	font-size: small;
+	text-align: center;
+	color: #909090;
+}
+
+#footer a {
+        color: #909090;
+}
+
+.comment .meta {
+	background: #eeeeee;
+}
+
+.patch .content {
+	border: thin solid gray;
+	padding: 1em;
+}
+
+.quote {
+	color: #007f00;
+}
+
+.auth {
+	font-size: small;
+	padding: 0.4em;
+}
+
+.search {
+	margin: 10px;
+}
+
+img {
+	border: 0;
+}
+
+span.p_header	{ color: #2e8b57; font-weight: bold; }
+span.p_chunk	{ color: #a52a2a; font-weight: bold; }
+span.p_context	{ color: #a020f0; }
+span.p_add	{ color: #008b8b; }
+span.p_del	{ color: #6a5acd; }
+span.p_mod	{ color: #0000ff; }
+
+.acked-by {
+	color: red;
+
+}
+
+.signed-off-by {
+	color: red;
+	font-weight: bold;
+}
+
+.from {
+	font-weight: bold;
+}
+
