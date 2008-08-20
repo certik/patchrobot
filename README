@@ -2,6 +2,7 @@ To make this work:
 
 $ ./getmail.py -c
 $ ./getmail.py config
+$ ./manage.py syncdb  #answer for example: yes, root, a@a.ca, root, root
 $ ./process.py
 $ ./manage.py runserver
 
