@@ -12,4 +12,8 @@ urlpatterns = patterns('',
 
     # Uncomment the next line for to enable the admin:
     (r'^admin/(.*)', admin.site.root),
+    (r'^issues/$', 'patchrobot.review.views.index'),
+    (r'^issues/(?P<issue_id>\d+)/$', 'patchrobot.review.views.issue'),
+    (r'^issues/(?P<issue_id>\d+)/(?P<message_id>\d+)/$',
+        'patchrobot.review.views.message'),
 )
