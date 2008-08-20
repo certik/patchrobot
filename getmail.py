@@ -3,6 +3,8 @@ from optparse import OptionParser
 from imaplib import IMAP4_SSL
 from email import message_from_string
 from ConfigParser import RawConfigParser
+from cPickle import dump
+import sys
 
 def parse_email(x):
     """
@@ -45,9 +47,11 @@ def get_emails(server, user, password):
                 email = data[0][1]
                 if ok != "OK":
                     raise Exception("Got wrong response from the server.")
-                print 'Message %s\n' % (num)
+                sys.stdout.write('[%s] ' % (num))
+                sys.stdout.flush()
                 emails.append(email)
         finally:
+            print
             M.close()
     finally:
         M.logout()
@@ -63,10 +67,13 @@ def run():
     l = get_emails(server, user, password)
     print "Parsing..."
     l = [parse_email(x) for x in l]
-    print "Formatting output..."
+    print "Pickling output..."
 
-    for e in l:
-        print "%20s %10s %s" % (e["from"], e["date"], e["subject"])
+    #for e in l:
+    #    print "%20s %10s %s" % (e["from"], e["date"], e["subject"])
+
+    dump(l, open("emails", "w"))
+    print "emails saved to the 'emails' file as a pickled list of dictionaries"
 
 def create_config():
     config = RawConfigParser()
