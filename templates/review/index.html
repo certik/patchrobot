@@ -1,9 +1,9 @@
 <h2>Patches list</h2>
 {% if issue_list %}
     {% for issue in issue_list %}
-        <h3>id:{{ issue.issue.id }}</h3>
+        <h3>id:{{ issue.id }}</h3>
         <ul>
-        {% for patch in issue.patch_set %}
+        {% for patch in issue.patch_set.all %}
             <li>id:{{ patch.id }} name: {{ patch.subject }}</li>
         {% endfor %}
         </ul>
