@@ -22,7 +22,9 @@ class Message(models.Model):
     patch = models.ForeignKey(Patch)
     _from = models.CharField(max_length=100)
     subject = models.CharField(max_length=100)
-    date = models.DateTimeField('message date')
+    #date = models.DateTimeField('message date')
+    date = models.CharField(max_length=100)
+    body = models.CharField(max_length=10000)
 
 admin.site.register(Issue)
 admin.site.register(Patch)

@@ -1,7 +1,8 @@
+<h2>Patches list</h2>
 {% if issue_list %}
     <ul>
     {% for issue in issue_list %}
-        <li>{{ issue.id }}</li>
+    <li>id:{{ issue.id }} name:{{ issue.name }}</li>
     {% endfor %}
     </ul>
 {% else %}
