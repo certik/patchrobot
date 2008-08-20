@@ -7,6 +7,22 @@ table {
 	border-collapse: collapse;
 }
 
+em.subject {
+	background: #b5ff74;
+	color: #000000;
+	font-weight: bold;
+}
+
+em.message-subject {
+	background: #f3f3aa;
+	color: #000000;
+	//font-weight: bold;
+}
+
+pre.patch {
+	background: #f3f3aa;
+}
+
 table.patchlist {
 	border: thin solid black;
 }

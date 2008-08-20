@@ -1,0 +1,23 @@
+<html>
+<head>
+    <title>Patch Robot</title>
+    <link type="text/css" rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+
+<h2>Patch details</h2>
+name: <em class="subject">{{ patch.subject }}</em><br/>
+parent issue: <a href="/issues">Issue {{ patch.issue.id }}</a>
+{% for message in patch.message_set.all %}
+<p>
+<em class="message-subject">{{ message.subject }}</em>
+</p>
+<pre class="patch">{{ message.body }}</pre>
+{% endfor %}
+
+  <div id="footer">
+   <a href="http://github.com/certik/patchrobot/">patchrobot</a>
+   patch tracking system
+  </div>
+</body>
+</html>
