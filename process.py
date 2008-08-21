@@ -8,10 +8,12 @@ os.environ["DJANGO_SETTINGS_MODULE"] = "patchrobot.settings"
 
 from patchrobot.review.models import Issue, Patch, Message
 
-print "deleting database"
-Issue.objects.all().delete()
-Patch.objects.all().delete()
-Message.objects.all().delete()
+# let's write some new utility for rebuilding the database from scratch, that
+# would use the delete commands below.
+#print "deleting database"
+#Issue.objects.all().delete()
+#Patch.objects.all().delete()
+#Message.objects.all().delete()
 print "adding messages"
 
 def find_message_by_id(parent_id):
@@ -30,6 +32,9 @@ def find_message_by_parent_id(parent_id):
 
 l = cPickle.load(open("emails"))
 for e in l:
+    c = find_message_by_id(e["ID"])
+    if c:
+        continue
     sub = e["subject"]
     if sub.startswith("Re: "):
         sub = sub[4:]
