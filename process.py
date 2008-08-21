@@ -14,14 +14,14 @@ Patch.objects.all().delete()
 Message.objects.all().delete()
 print "adding messages"
 
-def try_parent(parent_id):
+def find_message_by_id(parent_id):
     try:
         c = Message.objects.get(message_id__exact=parent_id)
     except Message.DoesNotExist:
         c = None
     return c
 
-def try_child(parent_id):
+def find_message_by_parent_id(parent_id):
     try:
         c = Message.objects.get(parent_id__exact=parent_id)
     except Message.DoesNotExist:
@@ -40,12 +40,12 @@ for e in l:
             )
     if e["parent"]:
         m.parent_id=e["parent"]
-    c = try_parent(e["parent"])
+    c = find_message_by_id(e["parent"])
     if c:
         m.parent = c.id
         m.patch = c.patch
         m.save()
-        c = try_child(m.message_id)
+        c = find_message_by_parent_id(m.message_id)
         if c:
             # join the issues
             print "joining issues"
@@ -60,7 +60,7 @@ for e in l:
             i.delete()
 
     else:
-        c = try_child(e["ID"])
+        c = find_message_by_parent_id(e["ID"])
         if c:
             print "WARNING: this was never tested, please check,"
             print "that all is ok and then remove this message",m.subject
